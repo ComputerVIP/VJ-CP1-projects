@@ -1,3 +1,4 @@
+#Vincent Johnson
 #INSTRUCTIONS:
 #Create a program that calculates the number of tables needed for a school awards ceremony. Make sure you are using variables to create your equation, and that you are resetting the variables instead of changing the original numbers. 
 
