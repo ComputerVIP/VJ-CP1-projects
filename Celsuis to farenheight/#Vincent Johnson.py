@@ -15,5 +15,6 @@
 #(Celsius * 9/5)+32
 
 cel = int(input("What's the temperature in celcuis?\n"))
-far = (cel * 9/5)+32
+far = str((cel * 9/5)+32)
+cel = str(cel)
 print(f"The temperature in Celcuis is {cel} and the temperature in farenheight is {far}.")
