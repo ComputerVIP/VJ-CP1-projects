@@ -2,7 +2,7 @@
 #INSTRUCTIONS:
 #Write a program that takes in grades for each of your classes and then outputs for the user their average grade.
 
-list = (" ")
+list = ("")
 
 x = 0
 cls = int(input("How many classes do you have?\n"))
