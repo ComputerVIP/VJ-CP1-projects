@@ -1,3 +1,5 @@
+#Vincent Johnson P1 Fibonacci assignment
+
 import time
 tme = int(time.time())
 print(tme)
