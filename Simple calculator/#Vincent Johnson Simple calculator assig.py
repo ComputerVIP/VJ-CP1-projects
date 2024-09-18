@@ -84,10 +84,12 @@ def scnd():
 
     if tel == ("y"):
         syn()
+        return
     if tel == ("n"):
         ank = input("Do you want to run regular instead? y/n\n")
         if ank == ("y"):
             reg()
+            return
         else:
             return
     else:
@@ -100,9 +102,12 @@ def strt():
     if ans == ("n"):
         print("It worked!")
         reg()
+        return
     if ans == ("y"):
         scnd()
+        return
     else:
-        print("Failed")
+        print("Failed\n")
+        strt()
 
 strt()
