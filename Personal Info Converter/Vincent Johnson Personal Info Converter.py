@@ -1,0 +1,12 @@
+#Write a short survey that asks for users name, age, height in meters, and favorite number. Convert the age and favorite number to integers and height to a float and print out all the information showing both the original input and the converted values! 
+name = input("What's your name?\n")
+age = input("What's your age?\n")
+age2 = int(age)
+height = input("What's your height in feet?\n")
+height2 = round((float(height) / 3.28084), 1)
+numbr = input("What's your favourite number?\n")
+numbr2 = int(numbr)
+print("\n\nRaw values:\n")
+print(f"{name}-name\n{age}-age\n{height}-height in feet\n{numbr}-favourite number")
+print("\n\nConverted values:\n")
+print(f"{name}-name\n{age2}-age\n{height2}-height in metres\n{numbr2}-favourite number")
