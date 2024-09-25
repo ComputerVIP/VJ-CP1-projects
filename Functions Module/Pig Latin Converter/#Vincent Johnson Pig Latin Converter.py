@@ -9,6 +9,18 @@ leng = str(len(var1))
 leng2 = int(leng)
 var2 = str(var1[0][0])
 var2 = var2.lower()
+vowels = 'a', 'e', 'i', 'o', 'u' or x == 'A' or 
+        x == 'E' or x == 'I' or x == 'O' or 
+        x == 'U'"
+
+def find_first_vowel(var):
+    i = 0   
+    while i < len(var):
+        if var[i] in vowels:
+            return i
+        i += 1
+    return -1
+
 def end():
     var4 = var3 + var2
     var4 = var4 + "ay"
