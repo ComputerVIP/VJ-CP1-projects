@@ -1,3 +1,4 @@
+#Vincent Johnson Secret Cipher assignment
 #Create a program with a function that that takes in a users string and uses a shift cypher to turn the string into a secret code. 
 
 #BONUS: 
