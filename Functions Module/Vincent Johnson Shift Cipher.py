@@ -13,7 +13,6 @@ def shifttext(shift):
     for i, char in enumerate(data):
         if char.isalpha():
             data[i] = chr((ord(char) + shift - ord('a')) % 26 + ord('a')) 
-            print(data)
         else:
             data[i] = char
     output = ''.join(data)
