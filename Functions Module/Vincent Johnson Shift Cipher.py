@@ -9,6 +9,7 @@
 shift = int(input("How many do you want to shift by?\n"))
 def shifttext(shift):
     inpt = input('Input text:\n')
+    inpt = inpt.lower()
     data = list(inpt)
     for i, char in enumerate(data):
         if char.isalpha():
