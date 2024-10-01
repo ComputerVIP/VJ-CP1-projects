@@ -9,28 +9,28 @@ tmr = 0
 
 #Square
 def sqr():
-    data = int(input("What is the length?"))
+    data = int(input("What is the length?\n"))
     ad = data * data
     print(f"The area of your square is {ad}")
 
 #Rectangle
 def rect():
-    data = int(input("What is the length?"))
-    data2 = int(input("What is the width?"))
+    data = int(input("What is the length?\n"))
+    data2 = int(input("What is the width?\n"))
     ad = data * data2
     print(f"The area of your rectangle is {ad}")
     
 #Triangle
 def tri():
-    data = int(input("What is the length?"))
-    data2 = int(input("What is the height?"))
+    data = int(input("What is the length?\n"))
+    data2 = int(input("What is the height?\n"))
     ad = data * data2
     ad = ad/2
     print(f"The area of your triangle is {ad}")
 
 #Circle DIAMETRE
 def crcd():
-    data = int(input("What is the diameter?"))
+    data = int(input("What is the diameter?\n"))
     ad = data/2
     ad = ad**2
     ad = ad*3.1415926535897932384626
@@ -38,13 +38,13 @@ def crcd():
 
 #Circle RADIUS
 def crcr():
-    data = int(input("What is the radius?"))
+    data = int(input("What is the radius?\n"))
     ad = (data**2)*3.1415926535897932384626
     print(f"The area of your circle is {ad}")
 
 #Circle MENU
 def crc(tmr):
-    print("For diametre, press 1\nFor radius, press 2")
+    print("For diametre, press 1\nFor radius, press 2\n")
     while True:
         tmr += 1
         if keyboard.is_pressed("1"):
@@ -62,8 +62,8 @@ def crc(tmr):
 
 #Trapezoid
 def trap():
-    data = int(input("What is the length of the bottom?"))
-    data2 = int(input("What is the length of the top?"))
+    data = int(input("What is the length of the bottom?\n"))
+    data2 = int(input("What is the length of the top?\n"))
     data3 = int(input("What is the hight?"))
     ad = data + data2
     ad = ad / 2
