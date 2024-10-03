@@ -48,28 +48,39 @@ def main():
         
         elif choice in ['2', '3', '4']:
             account_number = input("Enter account number: ")
+            #This just checks to see if there is an account
             if account_number in accounts:
+                #If account number is in accounts:
                 account = accounts[account_number]
                 if choice == '2':
+                    #If they picked 2 then it allows them to deposit money
                     amount = float(input("Enter deposit amount: "))
                     if account.deposit(amount):
                         print(f"Deposited ${amount:.2f} successfully!")
+                        #If it works, prints the amount deposited correctly
                     else:
                         print("Invalid deposit amount.")
+                        #Only goes here if it doesn't work depositing
                 elif choice == '3':
+                    #If they picked 3 it allows them to withdraw
                     amount = float(input("Enter withdrawal amount: "))
                     if account.withdraw(amount):
+                        #If it works, withdraws the amount correctly
                         print(f"Withdrawn ${amount:.2f} successfully!")
                     else:
                         print("Invalid withdrawal amount or insufficient funds.")
+                        #If it doesn't work it goes here, withdraw failed
                 else:
                     print(f"Current balance: ${account.get_balance():.2f}")
+                    #This just prints out your balance if you didn't pick 1-3
             else:
                 print("Account not found.")
+                #This is if your account is not in the system
         
         elif choice == '5':
             print("Thank you for using our banking system. Goodbye!")
             break
+        #This is if they entered 5 to stop the program
         
         else:
             print("Invalid choice. Please try again.")
