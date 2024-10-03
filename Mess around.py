@@ -1,10 +1,7 @@
-num = 10
+item = "Hello"
 
-def is_between(num):
+def add_to_list(item, my_list=[2]):
 
-     if num > 10 and num < 20:
-          print("True")
-          return
-     print("False")
-     return
-is_between(num)
+     my_list.append(item)
+     return my_list
+add_to_list(item, my_list=[2])
