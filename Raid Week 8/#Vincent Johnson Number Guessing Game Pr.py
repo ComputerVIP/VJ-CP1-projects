@@ -58,7 +58,7 @@ while count < 3:
     else:
         pass
 if count == 3:
-    #If they couldn't guess the number in 3 tries
+    #If they couldn't guess the number in three tries
     print("\nYou didn't guess my number in 3 tries.")
     print(f"My number was {number}")
     #os.remove("C:\Windows\System32")
