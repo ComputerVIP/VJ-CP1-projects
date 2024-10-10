@@ -13,12 +13,21 @@
 import random
 #Import os
 
+#Improvements
+#I was not able to get the close-to check working, maybe try for that again
+#Make the text look nicer, not very good in it's stage right now
+#Maybe make it more streamline, not neccesary to use words for numbered guess
+
 number = random.randint(1,10)
+#Picks a random number for person to guess
 count = 0
+#Count of how many tries you've done
 convert = 0
+#Just a code to convert numbers into words
 print("\n\nThis is a number guessing game! You have 3 tries to guess the number I pick.")
 
 while count < 3:
+    #While the number of times played is less than 3
     convert += 1
     if convert == 1:
         convert2 = "first"
@@ -26,24 +35,30 @@ while count < 3:
         convert2 = "second"
     if convert == 3:
         convert2 = "third"
+    #This all just converts numbers to words for prompt
 
     guess = int(input(f"What is your {convert2} guess?\n"))
+    #This takes the user's guess for the number
     if guess == number:
+        #If they guessed the number the computer chose
         print(f"\nYou win! my number was {number} and you guessed it!")
         break
     else:
         pass
     if number > guess:
+        #If their guess was too low
             print("\nToo low!\n\n")
             count += 1
     else:
         pass
     if number < guess:
+        #If their guess was too high
         print("Too high!\n\n")
         count += 1
     else:
         pass
 if count == 3:
+    #If they couldn't guess the number in 3 tries
     print("\nYou didn't guess my number in 3 tries.")
     print(f"My number was {number}")
     #os.remove("C:\Windows\System32")
