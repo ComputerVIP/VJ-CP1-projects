@@ -8,15 +8,18 @@ def maph2(eqtn):
     y = -100
     while True:
         try:
+            #Thinking of taking out the number before and after ^ to eval them seperately
             result = sympy.sympify(eqtn.replace('x', str(x)).replace('y', str(y)))
             eqtn2 = eqtn.replace('x', str(x)).replace('y', str(y)).replace('==', ' = ')
             if result is True:
                 print(f"For x = {x} and y = {y} the equation [\ {eqtn2} /] evaluates to: {result}")
             x = round((x+0.1), 2)
-            if x == 100:
+            if x > 100:
                 x = -100
                 y = round((y+0.1), 2)
-            if y == 100:
+                if y.is_integer() == True:
+                  print(f"{x} //{y}//")
+            if y > 100:
                 break
         except:
             print("\n//\n\nError occurred...")
@@ -27,8 +30,8 @@ def maph():
   import sympy
 
   print("Enter the equation:")
-  eqtn = input("(Note, you have to specify multiplication as * and division as /)\n")
-  eqtn = eqtn.replace('=', '==')
+  eqtn = input("(Note, you have to specify multiplication as * and division as / and ^ as exponent)\n")
+  eqtn = eqtn.replace('=', '==').replace('^', '**')
   print(eqtn)
   multi2 =  eqtn.count("y")
   if multi2>0:
@@ -44,7 +47,7 @@ def maph():
       if result is True:
         print(f"For x = {x}, the equation is true")
       x = round((x+0.1), 2)
-      if x == 101:
+      if x > 100:
         break
     except:
       break
