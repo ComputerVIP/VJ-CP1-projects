@@ -32,4 +32,12 @@ def main():
         print("You have a C!")
     elif (74.0>grade>70.0) is True:
         print("You have a C-!")
+    elif (70.0>grade>67.0) is True:
+        print("You have a D+!")
+    elif (67.0>grade>64.0) is True:
+        print("You have a D!")
+    elif (64.0>grade>60.0) is True:
+        print("You have a D-!")
+    elif (60.0>grade) is True:
+        print("You have an F!")
 main()
