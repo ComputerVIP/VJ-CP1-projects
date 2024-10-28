@@ -2,7 +2,6 @@ import sympy
 
 def maph2(eqtn):
     print("Running maph2")
-
     x = 0
     y = 0
     while True:
@@ -16,10 +15,8 @@ def maph2(eqtn):
             y = round((y+0.1), 2)
         if y > 100:
             break
-
-
+        
 def maph():
-
   print("Enter the equation:")
   eqtn = input("(Note, you have to specify multiplication as * and division as / and ^ as exponent)\n")
   eqtn = eqtn.replace('=', '==').replace('^', '**')
@@ -30,7 +27,6 @@ def maph():
   else:
      pass
   x = -100
-
   while True:
       result = eqtn.replace('x', str(x))
       result = sympy.sympify(result)
@@ -40,5 +36,4 @@ def maph():
       x = round((x+0.1), 2)
       if x > 100:
         break
-
 maph()
