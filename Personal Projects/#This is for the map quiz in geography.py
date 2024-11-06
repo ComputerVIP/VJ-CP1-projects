@@ -26,6 +26,7 @@ findtext(wordsearch)
 def main():
     time.sleep(5)
     mouse.wheel(-3)
+    #Use the Russia measurements and add off that for the others :)
     mouse.move(-10000, -10000, absolute=False, duration=0.1)
     mouse.move(1000, 400, absolute=False, duration=0.1)
     mouse.click('left')
