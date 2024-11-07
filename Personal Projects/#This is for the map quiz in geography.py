@@ -11,6 +11,16 @@ driver = webdriver.Chrome()
 url = "https://www.geoguessr.com/quiz/seterra/challenge/JM66C7"
 driver.get(url)
 
+country_element = driver.find_element(By.ID, "country-name")
+country_name = country_element.text
+
+# Check if the country name matches "Russia"
+if country_name == "Russia":
+    print("The correct country is Russia!")
+else:
+    print("The correct country is not Russia.")
+driver.get(url)
+
 wordsearch = "Russia"
 def findtext(wordsearch):
     # find out if specific text is on the webpage and print result
@@ -20,8 +30,9 @@ def findtext(wordsearch):
         return
     else:
         print("False")
+        time.sleep(2)
         return
-    
+
 findtext(wordsearch)    
 def main():
     time.sleep(5)
