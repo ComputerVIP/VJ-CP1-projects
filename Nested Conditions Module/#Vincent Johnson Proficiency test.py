@@ -24,18 +24,19 @@ def main(wins, rounds, qst, qstans):
         rounds +=1
         print(f"{wins}/{rounds}")
         option = random.randint(5,9)
+        print(f"Option:{option}")
     else:
         wins +=0
         rounds +=1
         print(f"{wins}/{rounds}")
         option = random.randint(1,4)
-    if option < 6:
+    if option < 5:
         if option == 1:
             qst = "What colour of these provokes the emotion happiness?\nA: Yellow\nB: Dark Blue\nC: Black\nD: Blood Red"
             qstans = "a"
             main(wins, rounds, qst, qstans)
         elif option == 2:
-            qst = "Which of these colours is the most common favourite?\nA: Black\nB: Orange\nC: Blue\nD: Red"
+            qst = "Which of these colours is the most common favourite?\nA: Black\nB: Yellow\nC: Blue\nD: Red"
             qstans = "c"
             main(wins, rounds, qst, qstans)
         elif option == 3:
@@ -56,15 +57,15 @@ def main(wins, rounds, qst, qstans):
             qstans = "c"
             main(wins, rounds, qst, qstans)
         elif option == 7:
-            qst = "Which colour is not actually a colour?\nA: Alizarin\nB: Dorno\nC: Apricot\nD: Beaver"
-            qstans = "b"
+            qst = "Which colour is not actually a colour?\nA: Alizarin\nB: Beaver\nC: Apricot\nD: Dorno"
+            qstans = "d"
             main(wins, rounds, qst, qstans)
         elif option == 8:
             qst = "Which of these colours is a shade of green?\nA: Catawba\nB: Camel\nC: Celadon\nD: Celeste"
             qstans = "b"
             main(wins, rounds, qst, qstans)
         elif option == 9:
-            qst = "Which colour is most commonly associated with rain?\nA: Purple\nB: Blue\nC: Grey\nD: Black"
+            qst = "Which of these wavelengths is not a colour?\nA: 388\nB: 201\nC: 743\nD: 426"
             qstans = "b"
             main(wins, rounds, qst, qstans)
-main(wins, rounds, qst, qstans)            
+main(wins, rounds, qst, qstans)
