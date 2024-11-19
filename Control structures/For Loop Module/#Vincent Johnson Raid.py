@@ -3,12 +3,12 @@ count = 0
 numbr = 1
 
 def main(count, numbr):
-    histo = "___________"
+    histo = "         "
     number = int(input("What is your number?\n"))
     if number > 9:
         print("9 or less!")
         return
-    histo = histo.replace("_", "*", number)
+    histo = histo.replace(" ", "*", number)
     print(f"{numbr}. {histo}")
     numbr += 1
     count += 1
