@@ -24,7 +24,8 @@ Room 7 has mop that allows you to clean up the spill hiding the map in room 3
 Room 2 has the phone number in the book that allows the person to call Jett's GF in room 4, she says he hasn't been over in days
 '''
 
-position = "_1"  # Player starts in the hallway
+end = 0
+position = "_1"
 map = ('''
 1   _   4
 2   _   5
@@ -35,7 +36,21 @@ inventory = []
 notes = ""
 trk = 0
 
-def main(inventory, notes, position, map, trk):
+def main(inventory, notes, position, map, trk, end):
+
+    def endy(end):
+        print("You go to the police, they nod at all your evidence and you explain to them how it all connects together.")
+        print("They then ask...")
+        ans = input("'Who is it?'")
+        if ans.lower() == "jett":
+            print("You correctly deduced the murderer, good job!")
+            end += 1
+            return end
+        else:
+            print("You were incorrect in your guess, the police arrested you instead.")
+            end += 1
+            return end
+
     def move(position, map):
         print(map)
         ans1 = input("Which room do you want to go to?\n")
@@ -144,15 +159,16 @@ def main(inventory, notes, position, map, trk):
             position = "_1"
             return position
         elif options == 3:
+            print("Going")
             position = "3a"
             return position
         else:
             print("Not a valid answer!")
             return rm3(inventory, notes, position)
-
+    print(position)
     def rm3a(inventory, notes, position):
         print("This room just has a table and a letter on the table.")
-        options = int(input("What would you like to do?\n1: Open the letter\n2: Leave\n"))
+        options = int(input("What would you like to do?\n1: Open the letter\n2: Leave\n3. Go to window\n"))
         if options == 1:
             if "Key" not in inventory:
                 print("The letter has a key inside it.")
@@ -164,6 +180,9 @@ def main(inventory, notes, position, map, trk):
                 rm3a(inventory, notes, position)
         elif options == 2:
             position = "3"
+            return position
+        elif options == 3:
+            position = "7"
             return position
         else:
             print("Not a valid answer!")
@@ -227,24 +246,57 @@ def main(inventory, notes, position, map, trk):
 
     def rm6(inventory, notes, position):
         print("As you enter the room a man confronts you.")
-        print("'I told you not to come back until you had something to prove me innocent.'") #Logic for inventory
-        options = int(input("What would you like to do?\n1: Search window\n2: Leave\n"))
-        if options == 1:
-            print("You see a window leading into room 5")
-            return position
-        elif options == 2:
-            position = "_1"
-            return position
+        print("'I told you not to come back until you had something to prove me innocent.'")
+        full = ""
+        if "Tools" in inventory:
+            full = full + "\nOh good, those tools in his room must prove it was him! Him who? Uh... I can't remember his name."
+            pass
+        elif "Phone" in inventory:
+            full = full + "\nHe wasn't there but someone else was? He could have been here."
+            pass
+        elif "Map" in inventory:
+            full = full + "\nWell that was their plan, but who is it?"
+            pass
+        print(full)
+        if len(full) > 1:
+            print("He nods approvingly, 'Ok, if you have enough evidence I can get you to the police'")
+            options = int(input("What would you like to do?\n1: Go to the police\n2: Leave\n"))
+            if options == 1:
+                endy(end)      
+            elif options == 2:
+                position = "_1"
+                return position
+            else:
+                print("Not a valid answer!")
+                return rm6(inventory, notes, position)
+        else:
+            print("Dave gets the police over to arrest you.")
+            end += 1
+            return end
 
     def rm6a(inventory, notes, position):
-        print("This room has a door leading outside and a vent.")
-        options = int(input("What would you like to do?\n1: Enter vent\n2: Go through the door\n"))
+        print("This room has a door leading outside and a vent, also a curious note on the table.")
+        options = int(input("What would you like to do?\n1: Enter vent\n2: Go through the door\n3. Check the note\n"))
         if options == 1:
             position = "7"
             return position
         elif options == 2:
             position = "6"
             return position
+        if options == 3:
+            print("The note is almost unreadable, but one thing is clear.")
+            print("The letter is addressed to Jett, in room 5.")
+            ans = int(input("Would you like to access your notes? 1 is yes, 2 is no\n"))
+            if ans == 1:
+                writing = input("What would you like to write?\n")
+                notes = notes + writing
+                print(f"\nNotes:\n{notes}\n")
+                return rm6a(inventory, notes, position)
+            elif ans == 2:
+                return rm6a(inventory, notes, position)
+        else:
+            print("Not a valid answer!")
+            return rm6a(inventory, notes, position)
 
     def rm7(inventory, notes, position):
         print("This room is a janitorial closet. There is a mop, lightbulb, boxes, vent, and window.")
@@ -263,45 +315,54 @@ def main(inventory, notes, position, map, trk):
         elif options == 4:
             position = "6a"
             return position
+        elif options == 5:
+            position = "3a"
+            return position
+        else:
+            print("Not a valid answer!")
+            return rm7(inventory, notes, position)
         
+
+    if end > 0:
+        print("Game over, you lost.")
+        return
+
     if position == "_1":
         position = move(position, map)
-        main(inventory, notes, position, map, trk)
+        main(inventory, notes, position, map, trk, end)
     elif position == "1":
         position = rm1(inventory, notes, position)
         if position == "_1":
-            main(inventory, notes, position, map, trk)
+            main(inventory, notes, position, map, trk, end)
     elif position == "2":
         position = rm2(inventory, notes, position)
         if position == "_1":
-            main(inventory, notes, position, map, trk)
+            main(inventory, notes, position, map, trk, end)
     elif position == "3":
         position = rm3(inventory, notes, position)
         if position == "_1":
-            main(inventory, notes, position, map, trk)
+            main(inventory, notes, position, map, trk, end)
     elif position == "3a":
-        position = rm3a(inventory, notes, position)
-        if position == "_1":
-            main(inventory, notes, position, map, trk)
+        rm3a(inventory, notes, position)
     elif position == "4":
         position = rm4(inventory, notes, trk, position)
         if position == "_1":
-            main(inventory, notes, position, map, trk)
+            main(inventory, notes, position, map, trk, end)
     elif position == "5":
         position = rm5(inventory, notes, position)
         if position == "_1":
-            main(inventory, notes, position, map, trk)
+            main(inventory, notes, position, map, trk, end)
     elif position == "6":
         position = rm6(inventory, notes, position)
         if position == "_1":
-            main(inventory, notes, position, map, trk)
+            main(inventory, notes, position, map, trk, end)
     elif position == "6a":
         position = rm6a(inventory, notes, position)
         if position == "_1":
-            main(inventory, notes, position, map, trk)
+            main(inventory, notes, position, map, trk, end)
     elif position == "7":
         position = rm7(inventory, notes, position)
         if position == "_1":
-            main(inventory, notes, position, map, trk)
+            main(inventory, notes, position, map, trk, end)
 
-main(inventory, notes, position, map, trk)
+main(inventory, notes, position, map, trk, end)
