@@ -32,7 +32,7 @@ map = ('''
 3   _   6
 3a  7   6a
 ''')
-inventory = []
+inventory = ""
 notes = ""
 trk = 0
 
@@ -79,6 +79,7 @@ def main(inventory, notes, position, map, trk, end):
             return move(position, map)
 
     def rm1(inventory, notes, position):
+        print("\n----------------------------------------------------------------------------\nThis is room 1\n")
         print("The room is an apartment, there is a kitchen, bedroom and living room.")
         print("Inside the living room is a mangled body.")
         options = int(input("What would you like to do?\n1: Search body\n2: Leave\n3: Go to window\n"))
@@ -106,6 +107,7 @@ def main(inventory, notes, position, map, trk, end):
             return rm1(inventory, notes, position)
 
     def rm2(inventory, notes, position):
+        print("\n----------------------------------------------------------------------------\nThis is room 2\n")
         print("The room is an apartment, there is a kitchen, bedroom and living room.")
         print("There is a notebook on the table")
         options = int(input("What would you like to do?\n1: Search notebook\n2: Leave\n3: Go to window\n"))
@@ -139,6 +141,7 @@ def main(inventory, notes, position, map, trk, end):
             return rm2(inventory, notes, position)
 
     def rm3(inventory, notes, position):
+        print("\n----------------------------------------------------------------------------\nThis is room 3\n")
         print("The room is an apartment, there is a kitchen, bedroom and living room.")
         print("There is a spill on the floor, and an open doorway.")
         options = int(input("What would you like to do?\n1: Go to the spill\n2: Leave\n3: Go through the door\n"))
@@ -148,25 +151,27 @@ def main(inventory, notes, position, map, trk, end):
                 print("There is a map under the spill, it shows a path from room 5 to room 1 and room 3 to room 5.")
                 inventory = inventory + "Map"
                 ans = int(input("Would you like to access your notes? 1 is yes, 2 is no.\n"))
-            if ans == 1:
-                writing = input("What would you like to write?\n")
-                notes = notes + writing
-                print(f"\nNotes:\n{notes}\n")
-                rm3(inventory, notes, position)
-            elif ans == 2:
-                rm3(inventory, notes, position)
+                if ans == 1:
+                    writing = input("What would you like to write?\n")
+                    notes = notes + writing
+                    print(f"\nNotes:\n{notes}\n")
+                    return rm3(inventory, notes, position)
+                elif ans == 2:
+                    return rm3(inventory, notes, position)
+            else:
+                pass
+            return rm3(inventory, notes, position)
         elif options == 2:
             position = "_1"
             return position
         elif options == 3:
-            print("Going")
             position = "3a"
             return position
         else:
             print("Not a valid answer!")
             return rm3(inventory, notes, position)
-    print(position)
     def rm3a(inventory, notes, position):
+        print("\n----------------------------------------------------------------------------\nThis is room 3a\n")
         print("This room just has a table and a letter on the table.")
         options = int(input("What would you like to do?\n1: Open the letter\n2: Leave\n3. Go to window\n"))
         if options == 1:
@@ -189,6 +194,7 @@ def main(inventory, notes, position, map, trk, end):
             return rm3a(inventory, notes, position)
 
     def rm4(inventory, notes, trk, position):
+        print("\n----------------------------------------------------------------------------\nThis is room 4\n")
         print("The room is an apartment, there is a kitchen, bedroom and living room.")
         print("There is a phone on the table.")
         options = int(input("What would you like to do?\n1: Go to the phone\n2: Leave\n3: Go through the door\n"))
@@ -224,18 +230,20 @@ def main(inventory, notes, position, map, trk, end):
             return rm4(inventory, notes, trk, position)
 
     def rm5(inventory, notes, position):
+        print("\n----------------------------------------------------------------------------\nThis is room 5\n")
         print("The room is too dark to see anything")
         if "Lightbulb" in inventory:
             print("You put the lightbulb in the fixture, you see a pile of tools in the apartment, the window is locked.")
             inventory = inventory + "Tools"
-            ans = int(input("Would you like to access your notes? 1 is yes, 2 is no\n"))
-            if ans == 1:
-                writing = input("What would you like to write?\n")
-                notes = notes + writing
-                print(f"\nNotes:\n{notes}\n")
-                pass
-            elif ans == 2:
-                pass
+            pass
+        ans = int(input("Would you like to access your notes? 1 is yes, 2 is no\n"))
+        if ans == 1:
+            writing = input("What would you like to write?\n")
+            notes = notes + writing
+            print(f"\nNotes:\n{notes}\n")
+            pass
+        elif ans == 2:
+            pass
         options = int(input("What would you like to do?\n1: Leave"))
         if options == 1:
             position = "_1"
@@ -244,7 +252,8 @@ def main(inventory, notes, position, map, trk, end):
             print("Not a valid answer!")
             return rm5(inventory, notes, position)
 
-    def rm6(inventory, notes, position):
+    def rm6(inventory, notes, position, end):
+        print("\n----------------------------------------------------------------------------\nThis is room 6\n")
         print("As you enter the room a man confronts you.")
         print("'I told you not to come back until you had something to prove me innocent.'")
         full = ""
@@ -271,10 +280,11 @@ def main(inventory, notes, position, map, trk, end):
                 return rm6(inventory, notes, position)
         else:
             print("Dave gets the police over to arrest you.")
-            end += 1
+            end = end + 1
             return end
 
     def rm6a(inventory, notes, position):
+        print("\n----------------------------------------------------------------------------\nThis is room 6a\n")
         print("This room has a door leading outside and a vent, also a curious note on the table.")
         options = int(input("What would you like to do?\n1: Enter vent\n2: Go through the door\n3. Check the note\n"))
         if options == 1:
@@ -299,6 +309,7 @@ def main(inventory, notes, position, map, trk, end):
             return rm6a(inventory, notes, position)
 
     def rm7(inventory, notes, position):
+        print("\n----------------------------------------------------------------------------\nThis is room 7\n")
         print("This room is a janitorial closet. There is a mop, lightbulb, boxes, vent, and window.")
         options = int(input("What would you like to do?\n1: Take mop\n2: Leave\n3. Take lightbulb\n4. Enter vent\n5. Go to window")) #Window to room 3a
         if options == 1:
@@ -322,47 +333,72 @@ def main(inventory, notes, position, map, trk, end):
             print("Not a valid answer!")
             return rm7(inventory, notes, position)
         
+    while True:
+        if end != 0:
+            print("Game over, you lost.")
+            return
+        else:
+            pass
 
-    if end > 0:
-        print("Game over, you lost.")
-        return
+        if position is "_1":
+            position = move(position, map)
+            main(inventory, notes, position, map, trk, end)
+            return position
+        elif position is "1":
+            position = rm1(inventory, notes, position)
+            if position is "_1":
+                main(inventory, notes, position, map, trk, end)
+                return position
+        elif position is "2":
+            position = rm2(inventory, notes, position)
+            if position is "_1":
+                main(inventory, notes, position, map, trk, end)
+                return position
+        elif position is "3":
+            position = rm3(inventory, notes, position)
+            if position is "_1":
+                main(inventory, notes, position, map, trk, end)
+                return position
+        elif position is "3a":
+            position = rm3a(inventory, notes, position)
+            if position is "_1":
+                main(inventory, notes, position, map, trk, end)
+                return position
+        elif position is "4":
+            position = rm4(inventory, notes, trk, position)
+            if position is "_1":
+                main(inventory, notes, position, map, trk, end)
+                return position
+        elif position is "5":
+            position = rm5(inventory, notes, position)
+            if position is "_1":
+                main(inventory, notes, position, map, trk, end)
+                return position
+            
 
-    if position == "_1":
-        position = move(position, map)
-        main(inventory, notes, position, map, trk, end)
-    elif position == "1":
-        position = rm1(inventory, notes, position)
-        if position == "_1":
-            main(inventory, notes, position, map, trk, end)
-    elif position == "2":
-        position = rm2(inventory, notes, position)
-        if position == "_1":
-            main(inventory, notes, position, map, trk, end)
-    elif position == "3":
-        position = rm3(inventory, notes, position)
-        if position == "_1":
-            main(inventory, notes, position, map, trk, end)
-    elif position == "3a":
-        rm3a(inventory, notes, position)
-    elif position == "4":
-        position = rm4(inventory, notes, trk, position)
-        if position == "_1":
-            main(inventory, notes, position, map, trk, end)
-    elif position == "5":
-        position = rm5(inventory, notes, position)
-        if position == "_1":
-            main(inventory, notes, position, map, trk, end)
-    elif position == "6":
-        position = rm6(inventory, notes, position)
-        if position == "_1":
-            main(inventory, notes, position, map, trk, end)
-    elif position == "6a":
-        position = rm6a(inventory, notes, position)
-        if position == "_1":
-            main(inventory, notes, position, map, trk, end)
-    elif position == "7":
-        position = rm7(inventory, notes, position)
-        if position == "_1":
-            main(inventory, notes, position, map, trk, end)
+
+
+            
+        #Wokring here
+        elif position is "6":
+            position = rm6(inventory, notes, position, end)
+            if end != 0:
+                print("Game over, you lost.")
+                return
+            else:
+                pass
+            if position is "_1":
+                main(inventory, notes, position, map, trk, end)
+                return position
+        elif position is "6a":
+            position = rm6a(inventory, notes, position)
+            if position is "_1":
+                main(inventory, notes, position, map, trk, end)
+                return position
+        elif position is "7":
+            position = rm7(inventory, notes, position)
+            if position is "_1":
+                main(inventory, notes, position, map, trk, end)
+                return position
 
 main(inventory, notes, position, map, trk, end)
