@@ -166,10 +166,10 @@ def main(inventory, notes, position, map, trk, end):
                 pass
             return rm3(inventory, notes, position)
         elif options == 2:
-            position = move(position, map)
+            position = "_1"
             return position
         elif options == 3:
-            position = rm3a(inventory, notes, position)
+            position = "3a"
             return position
         else:
             print("Not a valid answer!")
@@ -188,10 +188,10 @@ def main(inventory, notes, position, map, trk, end):
                 print("You have already grabbed the key.")
                 rm3a(inventory, notes, position)
         elif options == 2:
-            position = rm3(inventory, notes, position)
+            position = "3"
             return position
         elif options == 3:
-            position = rm7(inventory, notes, position)
+            position = "7"
             return position
         else:
             print("Not a valid answer!")
@@ -326,7 +326,7 @@ def main(inventory, notes, position, map, trk, end):
                     print("You have already grabbed the mop.")
                 return rm7(inventory, notes, position)
             elif options == 2:
-                position = move(position, map)
+                position = "_1"
                 return position
             elif options == 3:
                 if "Lightbulb" not in inventory:
@@ -353,7 +353,7 @@ def main(inventory, notes, position, map, trk, end):
     while end <= 0:
         if position == "_1":
             position = move(position, map)
-            position = main(inventory, notes, position, map, trk, end)
+            main(inventory, notes, position, map, trk, end)
             return position
         elif position == "1":
             position = rm1(inventory, notes, position)
