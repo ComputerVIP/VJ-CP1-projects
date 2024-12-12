@@ -181,12 +181,12 @@ def main(inventory, notes, position, map, trk, end):
         if options == 1:
             if "Key" not in inventory:
                 print("The letter has a key inside it.")
-                inventory = inventory + " Key"
+                inventory = inventory + "Key"
                 print("\nKey has been added to your inventory\n")
-                rm3a(inventory, notes, position)
+                return rm3a(inventory, notes, position)
             else:
                 print("You have already grabbed the key.")
-                rm3a(inventory, notes, position)
+                return rm3a(inventory, notes, position)
         elif options == 2:
             position = "3"
             return position
