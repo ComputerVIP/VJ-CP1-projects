@@ -201,7 +201,7 @@ def main(inventory, notes, position, map, trk, end):
         print("\n----------------------------------------------------------------------------\nThis is room 4\n")
         print("The room is an apartment, there is a kitchen, bedroom and living room.")
         print("There is a phone on the table.")
-        options = int(input("What would you like to do?\n1: Go to the phone\n2: Leave\n3: Go through the door\n"))
+        options = int(input("What would you like to do?\n1: Go to the phone\n2: Leave\n"))
         if options == 1:
             print("You head up to the phone")
             phone_num = input("What phone number do you want to dial? (include dashes and no spaces in the phone number)\n")
@@ -351,56 +351,47 @@ def main(inventory, notes, position, map, trk, end):
 
 
     while end <= 0:
-        if position == "_1":
+        if position is "_1":
             position = move(position, map)
-            main(inventory, notes, position, map, trk, end)
-            return position
-        elif position == "1":
+            return main(inventory, notes, position, map, trk, end)
+        elif position is "1":
             position = rm1(inventory, notes, position)
             if position is "_1":
-                main(inventory, notes, position, map, trk, end)
-                return position
-        elif position == "2":
+                return main(inventory, notes, position, map, trk, end)
+        elif position is "2":
             position = rm2(inventory, notes, position)
             if position is "_1":
                 main(inventory, notes, position, map, trk, end)
                 return position
-        elif position == "3":
+        elif position is "3":
             position = rm3(inventory, notes, position)
             if position is "_1":
-                position = main(inventory, notes, position, map, trk, end)
-                return position
-        elif position == "3a":
+                return main(inventory, notes, position, map, trk, end)
+        elif position is "3a":
             position = rm3a(inventory, notes, position)
             if position is "_1":
-                main(inventory, notes, position, map, trk, end)
-                return position
-        elif position == "4":
+                return main(inventory, notes, position, map, trk, end)
+        elif position is "4":
             position = rm4(inventory, notes, trk, position)
             if position is "_1":
-                main(inventory, notes, position, map, trk, end)
-                return position
-        elif position == "5":
+                return main(inventory, notes, position, map, trk, end)
+        elif position is "5":
             position = rm5(inventory, notes, position)
             if position is "_1":
-                main(inventory, notes, position, map, trk, end)
-                return position
-        elif position == "6":
+                return main(inventory, notes, position, map, trk, end)
+        elif position is "6":
             end = rm6(inventory, notes, position, end)
             if position is "_1":
-                main(inventory, notes, position, map, trk, end)
-                return position
+                return main(inventory, notes, position, map, trk, end)
             return end
-        elif position == "6a":
+        elif position is "6a":
             position = rm6a(inventory, notes, position)
             if position is "_1":
-                main(inventory, notes, position, map, trk, end)
-                return position
-        elif position == "7":
+                return main(inventory, notes, position, map, trk, end)
+        elif position is "7":
             position = rm7(inventory, notes, position)
             if position is "_1":
-                main(inventory, notes, position, map, trk, end)
-                return position
+                return main(inventory, notes, position, map, trk, end)
     print("Game over")
     return
 
