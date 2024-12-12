@@ -30,7 +30,7 @@ map = ('''
 3   _   6
 3a  7   6a
 ''')
-inventory = ""
+inventory = []
 notes = ""
 trk = 0
 
@@ -153,7 +153,7 @@ def main(inventory, notes, position, map, trk, end):
             print("The spill is stained, but there is something under it.")
             if "Mop" in inventory:
                 print("There is a map under the spill, it shows a path from room 5 to room 1 and room 3 to room 5.")
-                inventory = inventory + "Map"
+                inventory = inventory.append("Map")
                 ans = int(input("Would you like to access your notes? 1 is yes, 2 is no.\n"))
                 if ans == 1:
                     writing = input("What would you like to write?\n")
@@ -181,7 +181,7 @@ def main(inventory, notes, position, map, trk, end):
         if options == 1:
             if "Key" not in inventory:
                 print("The letter has a key inside it.")
-                inventory = inventory + "Key"
+                inventory = inventory.append("Key")
                 print("\nKey has been added to your inventory\n")
                 return rm3a(inventory, notes, position)
             else:
@@ -216,7 +216,7 @@ def main(inventory, notes, position, map, trk, end):
                     print("???: ...")
                     print("???: Well tell him that Graciepoo misses him.")
                     print("Grace: Goodbye.")
-                    inventory = inventory + "Phone"
+                    inventory = inventory.append("Phone")
                     trk += 1
                     ans = int(input("Would you like to access your notes? 1 is yes, 2 is no.\n"))
                     if ans == 1:
@@ -238,7 +238,7 @@ def main(inventory, notes, position, map, trk, end):
         print("The room is too dark to see anything")
         if "Lightbulb" in inventory:
             print("You put the lightbulb in the fixture, you see a pile of tools in the apartment, the window is locked.")
-            inventory = inventory + "Tools"
+            inventory = inventory.append("Tools")
             pass
         ans = int(input("Would you like to access your notes? 1 is yes, 2 is no\n"))
         if ans == 1:
@@ -261,7 +261,16 @@ def main(inventory, notes, position, map, trk, end):
         print("As you enter the room a man confronts you.")
         print("'I told you not to come back until you had something to prove me innocent.'")
         full = ""
-        if "Tools" in inventory:
+
+
+
+
+
+
+
+
+        #Working here
+        if inventory.count("Tools") > 0:
             full = full + "\nOh good, those tools in his room must prove it was him! Him who? Uh... I can't remember his name."
             pass
         elif "Phone" in inventory:
