@@ -34,7 +34,7 @@ map = ('''
 inventory = []
 notes = ""
 trk = 0
-
+nom = ""
 
 def main(inventory, notes, position, map, trk, end):
     def endyy(end):
@@ -55,6 +55,7 @@ def main(inventory, notes, position, map, trk, end):
             return end
 
     def move(position, map):
+        print(notes)
         print(map)
         ans1 = input("Which room do you want to go to?\n")
         if ans1 == "1":
@@ -120,17 +121,16 @@ def main(inventory, notes, position, map, trk, end):
         if options == 1:
             print("In the notebook there is a number...")
             print("222-900-3648")
-
             ans = int(input("Would you like to access your notes? 1 is yes, 2 is no.\n"))
             if ans == 1:
-                writing = input("What would you like to write?\n")
+                writing = str(input("What would you like to write?\n"))
                 notes = notes + writing
                 print(f"\nNotes:\n{notes}\n")
-                rm2(inventory, notes, position)
+                return rm2(inventory, notes, position)
             elif ans == 2:
-                rm2(inventory, notes, position)
+                return rm2(inventory, notes, position)
         elif options == 2:
-            position = move(position, map)
+            position = "_1"
             return position
         elif options == 3:
             print("You can move to room 3 or 1")
@@ -141,6 +141,9 @@ def main(inventory, notes, position, map, trk, end):
             elif ans == 2:
                 position = "3"
                 return position
+            else:
+                print("Not a valid answer!")
+                return rm2(inventory, notes, position)
         else:
             print("Not a valid answer!")
             return rm2(inventory, notes, position)
@@ -242,7 +245,7 @@ def main(inventory, notes, position, map, trk, end):
                         return rm4(inventory, notes, trk, position)
             else:
                 print("The phone dials, and someone yells at you and hangs up.")
-                return 
+                return rm4(inventory, notes, trk, position)
         elif options == 2:
             position = "_1"
             return position
