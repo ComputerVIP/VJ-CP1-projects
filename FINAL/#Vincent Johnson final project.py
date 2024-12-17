@@ -32,7 +32,7 @@ map = ('''
 3a  7   6a
 ''')
 inventory = []
-notes = ""
+notes = []
 trk = 0
 nom = ""
 
@@ -55,7 +55,6 @@ def main(inventory, notes, position, map, trk, end):
             return end
 
     def move(position, map):
-        print(notes)
         print(map)
         ans1 = input("Which room do you want to go to?\n")
         if ans1 == "1":
@@ -91,12 +90,12 @@ def main(inventory, notes, position, map, trk, end):
         options = int(input("What would you like to do?\n1: Search body\n2: Leave\n3: Go to window\n"))
         if options == 1:
             print("On the body there is only an I.D. the man's name is Sam. It looks like he was hit over the head, a rubber handle of something sits nearby.")
-            print("A note near the body says: 'You said something stupid, and now you're going to pay'.")
+            print("A note near the body says: 'You said gigajolts, and now you're going to pay'.")
 
             ans = int(input("Would you like to access your notes? 1 is yes, 2 is no.\n"))
             if ans == 1:
                 writing = input("What would you like to write?\n")
-                notes = notes + writing
+                notes.append(writing)
                 print(f"\nNotes:\n{notes}\n")
                 rm1(inventory, notes, position)
             elif ans == 2:
@@ -124,7 +123,7 @@ def main(inventory, notes, position, map, trk, end):
             ans = int(input("Would you like to access your notes? 1 is yes, 2 is no.\n"))
             if ans == 1:
                 writing = str(input("What would you like to write?\n"))
-                notes = notes + writing
+                notes.append(writing)
                 print(f"\nNotes:\n{notes}\n")
                 return rm2(inventory, notes, position)
             elif ans == 2:
@@ -161,7 +160,7 @@ def main(inventory, notes, position, map, trk, end):
                 ans = int(input("Would you like to access your notes? 1 is yes, 2 is no.\n"))
                 if ans == 1:
                     writing = input("What would you like to write?\n")
-                    notes = notes + writing
+                    notes.append(writing)
                     print(f"\nNotes:\n{notes}\n")
                     return rm3(inventory, notes, position)
                 elif ans == 2:
@@ -238,11 +237,14 @@ def main(inventory, notes, position, map, trk, end):
                     ans = int(input("\nWould you like to access your notes? 1 is yes, 2 is no.\n"))
                     if ans == 1:
                         writing = input("What would you like to write?\n")
-                        notes = notes + writing
+                        notes.append(writing)
                         print(f"\nNotes:\n{notes}\n")
                         return rm4(inventory, notes, trk, position)
                     elif ans == 2:
                         return rm4(inventory, notes, trk, position)
+                else:
+                    print("The phone rings, but Grace does not answer.")
+                    return rm4(inventory, notes, trk, position)
             else:
                 print("The phone dials, and someone yells at you and hangs up.")
                 return rm4(inventory, notes, trk, position)
@@ -263,7 +265,7 @@ def main(inventory, notes, position, map, trk, end):
         ans = int(input("Would you like to access your notes? 1 is yes, 2 is no\n"))
         if ans == 1:
             writing = input("What would you like to write?\n")
-            notes = notes + writing
+            notes.append(writing)
             print(f"\nNotes:\n{notes}\n")
             pass
         elif ans == 2:
@@ -324,7 +326,7 @@ def main(inventory, notes, position, map, trk, end):
             ans = int(input("Would you like to access your notes? 1 is yes, 2 is no\n"))
             if ans == 1:
                 writing = input("What would you like to write?\n")
-                notes = notes + writing
+                notes.append(writing)
                 print(f"\nNotes:\n{notes}\n")
                 return rm6a(inventory, notes, position)
             elif ans == 2:
@@ -376,47 +378,51 @@ def main(inventory, notes, position, map, trk, end):
 
 
     while end <= 0:
-        if position is "_1":
+        if position == "_1":
             position = move(position, map)
             return main(inventory, notes, position, map, trk, end)
-        elif position is "1":
+        elif position == "1":
             position = rm1(inventory, notes, position)
-            if position is "_1":
+            if position == "_1":
                 return main(inventory, notes, position, map, trk, end)
-        elif position is "2":
+        elif position == "2":
             position = rm2(inventory, notes, position)
-            if position is "_1":
+            if position == "_1":
                 main(inventory, notes, position, map, trk, end)
                 return position
-        elif position is "3":
+        elif position == "3":
             position = rm3(inventory, notes, position)
-            if position is "_1":
+            if position == "_1":
                 return main(inventory, notes, position, map, trk, end)
-        elif position is "3a":
+        elif position == "3a":
             position = rm3a(inventory, notes, position)
-            if position is "_1":
+            if position == "_1":
                 return main(inventory, notes, position, map, trk, end)
-        elif position is "4":
+        elif position == "4":
             position = rm4(inventory, notes, trk, position)
-            if position is "_1":
+            if position == "_1":
                 return main(inventory, notes, position, map, trk, end)
-        elif position is "5":
+        elif position == "5":
             position = rm5(inventory, notes, position)
-            if position is "_1":
+            if position == "_1":
                 return main(inventory, notes, position, map, trk, end)
-        elif position is "6":
+        elif position == "6":
             end = rm6(inventory, notes, position, end)
-            if position is "_1":
+            if position == "_1":
                 return main(inventory, notes, position, map, trk, end)
             return end
-        elif position is "6a":
+        elif position == "6a":
             position = rm6a(inventory, notes, position)
-            if position is "_1":
+            if position == "_1":
                 return main(inventory, notes, position, map, trk, end)
-        elif position is "7":
+        elif position == "7":
             position = rm7(inventory, notes, position)
-            if position is "_1":
+            if position == "_1":
                 return main(inventory, notes, position, map, trk, end)
+        else:
+            print("Error occurred, reverting to map.")
+            position = move(position, map)
+            return main(inventory, notes, position, map, trk, end)
     print("Game over")
     return
 
